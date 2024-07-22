@@ -1,52 +1,40 @@
-import 'bootstrap/dist/css/bootstrap.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function Header() {
     return (
         <header>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <a className="navbar-brand">Eventure Pro</a>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target=".navbar-collapse"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon" />
-                    </button>
-                    <div className="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul className="navbar-nav flex-grow-1">
-                            <li className="nav-item">
-                                <a className="nav-link text-dark">За нас</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark">Услуги</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark">Обекти</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark">Сравни</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark">Постове</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark">Продукти</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark">Добави заявка</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark">Моите продукти</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+                <Container>
+                    <Navbar.Brand href="#home">Home</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link href="#features">Features</Nav.Link>
+                            <Nav.Link href="#pricing">Pricing</Nav.Link>
+                            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">
+                                    All events
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#action/3.4">
+                                    Create Event
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href="login">Login</Nav.Link>
+                            <Nav.Link eventKey={2} href="register">
+                                Register
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         </header>
 
     )
