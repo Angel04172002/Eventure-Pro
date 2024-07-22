@@ -1,4 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.css';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+
 import './EventListItem.css';
 
 export default function EventListItem({
@@ -9,47 +12,20 @@ export default function EventListItem({
 
     return (
         <>
+            <Col>
+                <Card>
+                    <Card.Img className='cardImg' variant="top" src= {imageUrl} />
+                    <Card.Body>
+                        <Card.Title>{title}</Card.Title>
+                        <Card.Text>
+                            {description}
+                        </Card.Text>
+                    </Card.Body>
 
-            <div className="col">
-                <div className="card h-100">
-                    <img src={imageUrl} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
-                        <p className="card-text">Created On</p>
-                        <div
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                gap: "2em",
-                                marginBottom: "1em"
-                            }}
-                            className="changeButtons"
-                        >
-                            <a
-                                style={{ padding: "0.9em", display: "block" }}
-                                className="edit-btn"
-                            >
-                                {" "}
-                                Редактирай
-                            </a>
-                            <a
-                                style={{ padding: "0.9em", display: "block" }}
-                                className="delete-btn"
-                            >
-                                Изтрий
-                            </a>
-                        </div>
-                        <a
-                            id="open-submit"
-                            type="submit"
-                            className="w-100 btn open-btn btn-primary"
-                        >
-                            Отвори
-                        </a>
-                    </div>
-                </div>
-            </div>
+                    <Button variant="primary">Open</Button>
+                </Card>
+            </Col>
+
         </>
     )
 }
