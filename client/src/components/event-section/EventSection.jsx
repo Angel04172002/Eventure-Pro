@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import EventList from "./event-list/EventList";
 import EventCreate from "./event-create/EventCreate";
 
@@ -10,7 +10,7 @@ const baseUrl = 'http://localhost:3030/jsonstore';
 export default function EventSection() {
 
     const [events, setEvents] = useState([]);
-    const [loading, isLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
 
@@ -21,9 +21,11 @@ export default function EventSection() {
 
             const events = Object.values(result);
 
-            
+            console.log(events);
+
+
             setEvents(events);
-            isLoading(false);
+            setIsLoading(false);
 
         })();
     }, []);
@@ -34,8 +36,8 @@ export default function EventSection() {
         <>
             <h2>Events</h2>
 
-            {!isLoading && <EventList events={events} />}
-
+            <EventList events={events} />
+            
             <EventCreate />
 
         </>

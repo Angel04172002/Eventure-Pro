@@ -5,9 +5,10 @@ export default function EventList({
     events
 }) {
 
+
     return (
         <>
-        
+
             {events.map(ev =>
                 <EventListItem
                     key={ev._id}
