@@ -23,9 +23,9 @@ export default function EventCreate() {
     }, []);
 
 
-    
-    const changeHandler = (e) => {
 
+    const changeHandler = (e) => {
+       
         setFormValues(oldState => ({
             ...oldState,
             [e.target.name]: e.target.value
@@ -71,15 +71,32 @@ export default function EventCreate() {
 
                 <div className="row mb-3">
                     <div className="col-sm-10 form-group text-div">
-                        <label className="text-label">Изображение</label>
+                        <label className="text-label" htmlFor='imageUrl'>Изображение</label>
                         <input
                             name='imageUrl'
+                            id='imageUrl'
                             type="text"
                             className="form-control"
                             value={formValues.imageUrl}
                             onChange={changeHandler}
 
                         />
+                    </div>
+                </div>
+
+
+                <div className="row mb-3">
+                    <div className="col-sm-10 form-group text-div">
+                        <label className="text-label">Категория</label>
+
+                        <select name="category" id="categorySelect" onChange={changeHandler}>
+
+                            <option value="entertainment">Entertainment</option>
+                            <option value="study">Studying</option>
+                            <option value="science">Science</option>
+
+                        </select>
+
                     </div>
                 </div>
 
