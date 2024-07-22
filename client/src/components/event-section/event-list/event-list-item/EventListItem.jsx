@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import './EventListItem.css';
 
 export default function EventListItem({
     title,
