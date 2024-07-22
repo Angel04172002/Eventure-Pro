@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 
 export default function EventCreate() {
@@ -13,9 +13,18 @@ export default function EventCreate() {
         updatedAt: ''
     });
 
-    const changeHandler = (e) => {
+    const eventFormInputRef = useRef();
 
-        console.log('Pre render')
+
+    useEffect(() => {
+
+        eventFormInputRef.current.focus();
+
+    }, []);
+
+
+    
+    const changeHandler = (e) => {
 
         setFormValues(oldState => ({
             ...oldState,
@@ -40,6 +49,7 @@ export default function EventCreate() {
                             id="exampleFormControlInput1"
                             value={formValues.title}
                             onChange={changeHandler}
+                            ref={eventFormInputRef}
                         />
                     </div>
                 </div>
