@@ -14,9 +14,7 @@ export default function EventList({
                 {events.map(ev =>
                     <EventListItem
                         key={ev._id}
-                        title={ev.title}
-                        description={ev.description}
-                        imageUrl={ev.imageUrl}
+                        event = {ev}
                     />
                 )}
 

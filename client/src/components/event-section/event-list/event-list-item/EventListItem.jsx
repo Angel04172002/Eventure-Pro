@@ -5,20 +5,19 @@ import Button from 'react-bootstrap/Button';
 import './EventListItem.css';
 
 export default function EventListItem({
-    title,
-    description,
-    imageUrl
+    event
 }) {
+
 
     return (
         <>
             <Col>
                 <Card>
-                    <Card.Img className='cardImg' variant="top" src= {imageUrl} />
+                    <Card.Img className='cardImg' variant="top" src= {event.imageUrl} />
                     <Card.Body>
-                        <Card.Title>{title}</Card.Title>
+                        <Card.Title>{event.title}</Card.Title>
                         <Card.Text>
-                            {description}
+                            {event.description}
                         </Card.Text>
                     </Card.Body>
 
