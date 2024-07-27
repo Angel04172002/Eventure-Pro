@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import EventList from "./event-list/EventList";
-import EventCreate from "./event-create/EventCreate";
 
 
 const baseUrl = 'http://localhost:3030/jsonstore';
