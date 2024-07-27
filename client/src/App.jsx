@@ -2,16 +2,28 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import EventSection from './components/event-section/EventSection';
+import EventCreate from './components/event-section/event-create/EventCreate';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
   return (
     <>
+    
       <Header />
 
-      <EventSection />
+      <Routes>
+
+        <Route path='/event/all' element={<EventSection />} />
+        <Route path='/event/create' element={ <EventCreate />} />
+
+      </Routes>
+
+
+
 
       <Footer />
     </>

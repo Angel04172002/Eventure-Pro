@@ -31,8 +31,6 @@ export default function EventSection() {
             <h2>Events</h2>
 
             <EventList events={events} />
-            
-            <EventCreate />
 
         </>
 
