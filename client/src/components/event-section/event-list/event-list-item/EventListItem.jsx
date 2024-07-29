@@ -1,8 +1,8 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 
 import './EventListItem.css';
+import { Link } from 'react-router-dom';
 
 export default function EventListItem({
     event
@@ -13,7 +13,7 @@ export default function EventListItem({
         <>
             <Col>
                 <Card>
-                    <Card.Img className='cardImg' variant="top" src= {event.imageUrl} />
+                    <Card.Img className='cardImg' variant="top" src={event.imageUrl} />
                     <Card.Body>
                         <Card.Title>{event.title}</Card.Title>
                         <Card.Text>
@@ -21,7 +21,7 @@ export default function EventListItem({
                         </Card.Text>
                     </Card.Body>
 
-                    <Button variant="primary">Open</Button>
+                    <Link to= {`/event/${event._id}/details`} className='text-sm font-semibold leading-6 text-gray-900'>Open</Link>
                 </Card>
             </Col>
 

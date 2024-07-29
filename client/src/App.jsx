@@ -7,18 +7,20 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 
 import { Route, Routes } from 'react-router-dom';
+import EventDetails from './components/event-section/event-details/EventDetails';
 
 function App() {
 
   return (
     <>
-    
+
       <Header />
 
       <Routes>
 
         <Route path='/event/all' element={<EventSection />} />
         <Route path='/event/create' element={ <EventCreate />} />
+        <Route path='/event/:eventId/details' element={ <EventDetails />} />
 
       </Routes>
 
