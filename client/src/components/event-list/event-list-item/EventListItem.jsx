@@ -14,11 +14,9 @@ export default function EventListItem({
             <Col>
                 <Card>
                     <Card.Img className='cardImg' variant="top" src={event.imageUrl} />
+                    
                     <Card.Body>
                         <Card.Title>{event.title}</Card.Title>
-                        <Card.Text>
-                            {event.description}
-                        </Card.Text>
                     </Card.Body>
 
                     <Link to= {`/event/${event._id}/details`} className='text-sm font-semibold leading-6 text-gray-900'>Open</Link>
