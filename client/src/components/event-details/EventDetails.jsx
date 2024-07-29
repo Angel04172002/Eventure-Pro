@@ -1,4 +1,3 @@
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 

@@ -1,13 +1,15 @@
+import { Route, Routes } from 'react-router-dom';
+
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import EventSection from './components/event-section/EventSection';
-import EventCreate from './components/event-section/event-create/EventCreate';
+import EventCreate from './components/event-create/EventCreate';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import EventDetails from './components/event-details/EventDetails';
+import EventList from './components/event-list/EventList';
 
-import { Route, Routes } from 'react-router-dom';
-import EventDetails from './components/event-section/event-details/EventDetails';
+
 
 function App() {
 
@@ -18,9 +20,9 @@ function App() {
 
       <Routes>
 
-        <Route path='/event/all' element={<EventSection />} />
-        <Route path='/event/create' element={ <EventCreate />} />
-        <Route path='/event/:eventId/details' element={ <EventDetails />} />
+        <Route path='/event/all' element={<EventList />} />
+        <Route path='/event/create' element={<EventCreate />} />
+        <Route path='/event/:eventId/details' element={<EventDetails />} />
 
       </Routes>
 
