@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
+import eventApi from '../../api/eventApi';
 
-const baseUrl = 'http://localhost:3030/jsonstore';
 
 export default function EventDetails() {
 
@@ -11,15 +11,12 @@ export default function EventDetails() {
 
     useEffect(() => {
 
-        (async function getOne() {
+        eventApi.getOne(eventId)
+            .then(result => {
 
-            const response = await fetch(`${baseUrl}/events/${eventId}`);
-            const data = await response.json();
+                setEventInfo(result);
 
-            setEventInfo(data);
-
-        })();
-
+            });
     }, []);
 
 
