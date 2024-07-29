@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { useEffect, useRef, useState } from 'react';
+import eventApi from '../../api/eventApi';
 
 
 export default function EventCreate() {
@@ -9,8 +10,8 @@ export default function EventCreate() {
         description: '',
         imageUrl: '',
         category: '',
-        createdOn: '',
-        updatedAt: ''
+        place: '',
+        date: ''
     });
 
     const eventFormInputRef = useRef();
@@ -32,10 +33,17 @@ export default function EventCreate() {
         }));
     };
 
+    const createEventHandler = (e) => {
+
+        e.preventDefault();
+
+        eventApi.create(formValues);
+    };
+
     return (
 
         <div className="form-container text-center">
-            <form method="post" className="edit-form">
+            <form method="post" className="edit-form" onSubmit={createEventHandler}>
 
                 <div className="row mb-3">
                     <div className="col-sm-10 form-group topic-div">
@@ -99,6 +107,40 @@ export default function EventCreate() {
 
                     </div>
                 </div>
+
+
+                <div className="row mb-3">
+                    <div className="col-sm-10 form-group text-div">
+                        <label className="text-label" htmlFor='placeInput'>Място</label>
+                        <input
+                            name='place'
+                            id='placeInput'
+                            type="text"
+                            className="form-control"
+                            value={formValues.place}
+                            onChange={changeHandler}
+
+                        />
+                    </div>
+                </div>
+
+
+
+                <div className="row mb-3">
+                    <div className="col-sm-10 form-group text-div">
+                        <label className="text-label" htmlFor='dateInput'>Дата</label>
+                        <input
+                            name='date'
+                            id='dateInput'
+                            type="text"
+                            className="form-control"
+                            value={formValues.date}
+                            onChange={changeHandler}
+
+                        />
+                    </div>
+                </div>
+
 
                 <div className="col-10">
                     <input
