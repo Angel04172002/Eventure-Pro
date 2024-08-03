@@ -18,6 +18,11 @@ export default function Header() {
                 Login
                 </Link>
 
+
+                <Link to="/register" className='text-sm font-semibold leading-6 text-gray-900'>
+                Register
+                </Link>
+
             </div>
         </header>
 

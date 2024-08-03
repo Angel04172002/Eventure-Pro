@@ -9,6 +9,7 @@ import Footer from './components/footer/Footer';
 import EventDetails from './components/event-details/EventDetails';
 import EventList from './components/event-list/EventList';
 import Login from './components/login/Login';
+import Register from './components/register/Register';
 
 
 
@@ -22,6 +23,7 @@ function App() {
       <Routes>
 
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
 
         <Route path='/event/all' element={<EventList />} />
         <Route path='/event/create' element={<EventCreate />} />
