@@ -47,11 +47,15 @@ export default function EventCreate() {
 
     return (
 
+
         <div style={{
             display: 'block',
             width: 700,
             padding: 30
         }}>
+
+
+            <h2 className= {styles['form-title']}>Create Event</h2>
 
 
             <Form onSubmit={createEventHandler} className={styles['event-form']}>

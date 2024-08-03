@@ -1,5 +1,6 @@
 .form-title {
     font-size: 3em;
+    margin-top: 1em;
 }
 
 .event-form {
@@ -13,5 +14,6 @@
 .create-btn {
     display: block;
     width: 30em;
-    margin-top: 3em;
+    margin-top: 20px;
+    margin: 0 auto;
 }

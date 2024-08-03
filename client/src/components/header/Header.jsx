@@ -8,14 +8,15 @@ export default function Header() {
 
         <header>
 
-            <div style={{ position: 'fixed', top: 10, marginLeft: 'auto', marginRight: 'auto' }} className='hidden lg:flex lg:gap-x-12'>
+            <div style={{ position: 'fixed', top: 10, right: 1, left: 1 }}>
 
                 <Navbar expand="lg" className="bg-body-tertiary">
 
                     <Container>
+
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
+                            <Nav className="me-auto" style={{ margin: '0 auto' }}>
 
                                 <Nav.Link as={Link} to="/">Home</Nav.Link>
 
@@ -26,13 +27,10 @@ export default function Header() {
                                 <Nav.Link as={Link} to="/login">Login</Nav.Link>
                                 <Nav.Link as={Link} to="/register">Register</Nav.Link>
 
-
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
-
-
 
             </div>
         </header>
