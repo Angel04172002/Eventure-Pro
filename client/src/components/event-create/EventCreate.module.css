@@ -1,0 +1,17 @@
+.form-title {
+    font-size: 3em;
+}
+
+.event-form {
+    margin-top: 2em;
+}
+
+.form-label {
+    text-align: start;
+}
+
+.create-btn {
+    display: block;
+    width: 30em;
+    margin-top: 3em;
+}

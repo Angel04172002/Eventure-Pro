@@ -2,6 +2,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { useEffect, useRef, useState } from 'react';
 import eventApi from '../../api/eventApi';
 import 'bootstrap/dist/css/bootstrap.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import styles from './EventCreate.module.css'
 
 import { useForm } from '../../hooks/useForm';
 
@@ -50,118 +53,49 @@ export default function EventCreate() {
             padding: 30
         }}>
 
-            <form method="post" className="edit-form" onSubmit={createEventHandler}>
 
-                <div className="row mb-3">
-                    <div className="form-group topic-div">
-                        <label className="topic-label" htmlFor="exampleFormControlInput1">
-                            Име
-                        </label>
-                        <input
-                            name='title'
-                            type="text"
-                            className="form-control"
-                            id="exampleFormControlInput1"
-                            value={formValues.title}
-                            onChange={changeHandler}
-                            ref={eventFormInputRef}
-                        />
-                    </div>
-                </div>
-                <div className="row mb-3">
-                    <div className="form-group message-div">
-                        <label className="comment-label" htmlFor="description">
-                            Описание
-                        </label>
-                        <textarea
-                            name="description"
-                            className="form-control"
-                            id="exampleFormControlTextarea1"
-                            rows={3}
-                            value={formValues.description}
-                            onChange={changeHandler}
-                        />
-                    </div>
-                </div>
+            <Form onSubmit={createEventHandler} className={styles['event-form']}>
 
-                <div className="row mb-3">
-                    <div className="form-group message-div">
-                        <label className="comment-label" htmlFor="exampleFormControlInput1">
-                            Изображение
-                        </label>
-                        <input
-                            name='imageUrl'
-                            type="text"
-                            className="form-control"
-                            id="exampleFormControlInput1"
-                            value={formValues.imageUrl}
-                            onChange={changeHandler}
-                        />
-                    </div>
-                </div>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label className={styles['form-label']}>Title</Form.Label>
+                    <Form.Control type="text" value={formValues.title} name="title" onChange={changeHandler} />
+                </Form.Group>
 
-                <div className="row mb-3">
-                    <div className="col-sm-10 form-group text-div">
-                        <label className="text-label">Категория</label>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label className={styles['form-label']}>Description</Form.Label>
+                    <Form.Control type="text" value={formValues.description} name="description" onChange={changeHandler} />
+                </Form.Group>
 
-                        <select name="category" id="categorySelect" onChange={changeHandler}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label className={styles['form-label']}>Image URL</Form.Label>
+                    <Form.Control type="text" value={formValues.imageUrl} name="imageUrl" onChange={changeHandler} />
+                </Form.Group>
 
-                            <option value="entertainment">Entertainment</option>
-                            <option value="study">Studying</option>
-                            <option value="science">Science</option>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label className={styles['form-label']}>Category</Form.Label>
+                    <Form.Select name="category" value={formValues.category} onChange={changeHandler} aria-label="Default select example">
+                        <option>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </Form.Select>
+                </Form.Group>
 
-                        </select>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label className={styles['form-label']}>Place</Form.Label>
+                    <Form.Control type="text" value={formValues.place} name="place" onChange={changeHandler} />
+                </Form.Group>
 
-                    </div>
-                </div>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label className={styles['form-label']}>Date</Form.Label>
+                    <Form.Control type="date" value={formValues.date} name="date" onChange={changeHandler} />
+                </Form.Group>
 
 
-                <div className="row mb-3">
-                    <div className="form-group message-div">
-                        <label className="comment-label" htmlFor="exampleFormControlInput1">
-                            Изображение
-                        </label>
-                        <input
-                            name='place'
-                            type="text"
-                            className="form-control"
-                            id="exampleFormControlInput1"
-                            value={formValues.place}
-                            onChange={changeHandler}
-                        />
-                    </div>
-                </div>
-
-
-
-                <div className="row mb-3">
-                    <div className="form-group message-div">
-                        <label className="comment-label" htmlFor="exampleFormControlInput1">
-                            Дата
-                        </label>
-                        <input
-                            name='dateInput'
-                            type="date"
-                            className="form-control"
-                            id="exampleFormControlInput1"
-                            value={formValues.date}
-                            onChange={changeHandler}
-                        />
-                    </div>
-                </div>
-
-
-
-                <div className="col-10">
-                    <input
-                        id="submit-btn"
-                        type="submit"
-                        className="w-100 btn btn-primary"
-                        defaultValue="Запази"
-                    />
-                </div>
-            </form>
-
+                <Button className={styles['create-btn']} variant="primary" type="submit">
+                    Create Event
+                </Button>
+            </Form>
 
         </div>
 

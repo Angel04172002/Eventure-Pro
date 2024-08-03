@@ -10,7 +10,7 @@ import EventDetails from './components/event-details/EventDetails';
 import EventList from './components/event-list/EventList';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
-
+import Home from './components/home/Home';
 
 
 function App() {
@@ -21,6 +21,8 @@ function App() {
       <Header />
 
       <Routes>
+
+        <Route path='/' element={<Home />} />
 
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
