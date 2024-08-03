@@ -1,6 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { useEffect, useRef, useState } from 'react';
 import eventApi from '../../api/eventApi';
+import 'bootstrap/dist/css/bootstrap.css';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 
 export default function EventCreate() {
@@ -19,14 +22,14 @@ export default function EventCreate() {
 
     useEffect(() => {
 
-        eventFormInputRef.current.focus();
+        //eventFormInputRef.current.focus();
 
     }, []);
 
 
 
     const changeHandler = (e) => {
-       
+
         setFormValues(oldState => ({
             ...oldState,
             [e.target.name]: e.target.value
@@ -37,16 +40,26 @@ export default function EventCreate() {
 
         e.preventDefault();
 
-        eventApi.create(formValues);
+        eventApi.create(formValues)
+            .then(() => {
+
+                console.log('created');
+
+            });
     };
 
     return (
 
-        <div className="form-container text-center">
+        <div style={{
+            display: 'block',
+            width: 700,
+            padding: 30
+        }}>
+
             <form method="post" className="edit-form" onSubmit={createEventHandler}>
 
                 <div className="row mb-3">
-                    <div className="col-sm-10 form-group topic-div">
+                    <div className="form-group topic-div">
                         <label className="topic-label" htmlFor="exampleFormControlInput1">
                             Име
                         </label>
@@ -62,7 +75,7 @@ export default function EventCreate() {
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <div className="col-sm-10 form-group message-div">
+                    <div className="form-group message-div">
                         <label className="comment-label" htmlFor="description">
                             Описание
                         </label>
@@ -78,20 +91,20 @@ export default function EventCreate() {
                 </div>
 
                 <div className="row mb-3">
-                    <div className="col-sm-10 form-group text-div">
-                        <label className="text-label" htmlFor='imageUrl'>Изображение</label>
+                    <div className="form-group message-div">
+                        <label className="comment-label" htmlFor="exampleFormControlInput1">
+                            Изображение
+                        </label>
                         <input
                             name='imageUrl'
-                            id='imageUrl'
                             type="text"
                             className="form-control"
+                            id="exampleFormControlInput1"
                             value={formValues.imageUrl}
                             onChange={changeHandler}
-
                         />
                     </div>
                 </div>
-
 
                 <div className="row mb-3">
                     <div className="col-sm-10 form-group text-div">
@@ -110,16 +123,17 @@ export default function EventCreate() {
 
 
                 <div className="row mb-3">
-                    <div className="col-sm-10 form-group text-div">
-                        <label className="text-label" htmlFor='placeInput'>Място</label>
+                    <div className="form-group message-div">
+                        <label className="comment-label" htmlFor="exampleFormControlInput1">
+                            Изображение
+                        </label>
                         <input
                             name='place'
-                            id='placeInput'
                             type="text"
                             className="form-control"
+                            id="exampleFormControlInput1"
                             value={formValues.place}
                             onChange={changeHandler}
-
                         />
                     </div>
                 </div>
@@ -127,19 +141,21 @@ export default function EventCreate() {
 
 
                 <div className="row mb-3">
-                    <div className="col-sm-10 form-group text-div">
-                        <label className="text-label" htmlFor='dateInput'>Дата</label>
+                    <div className="form-group message-div">
+                        <label className="comment-label" htmlFor="exampleFormControlInput1">
+                            Дата
+                        </label>
                         <input
-                            name='date'
-                            id='dateInput'
-                            type="text"
+                            name='dateInput'
+                            type="date"
                             className="form-control"
+                            id="exampleFormControlInput1"
                             value={formValues.date}
                             onChange={changeHandler}
-
                         />
                     </div>
                 </div>
+
 
 
                 <div className="col-10">
@@ -151,6 +167,8 @@ export default function EventCreate() {
                     />
                 </div>
             </form>
+
+
         </div>
 
     )

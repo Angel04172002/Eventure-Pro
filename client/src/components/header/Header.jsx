@@ -4,7 +4,7 @@ export default function Header() {
     return (
 
         <header>
-            <div className='hidden lg:flex lg:gap-x-12'>
+            <div style={{position: 'fixed', top: 10, marginLeft: 'auto', marginRight: 'auto'}} className='hidden lg:flex lg:gap-x-12'>
 
                 <Link to="/event/all" className='text-sm font-semibold leading-6 text-gray-900'>
                 All Events
@@ -14,6 +14,9 @@ export default function Header() {
                 Create Event
                 </Link>
 
+                <Link to="/login" className='text-sm font-semibold leading-6 text-gray-900'>
+                Login
+                </Link>
 
             </div>
         </header>

@@ -27,6 +27,9 @@ export default function EventList() {
     return (
         <>
 
+            <h2>All events</h2>
+
+            
             <Row xs={1} md={2} className="g-4">
 
                 {events.map(ev =>

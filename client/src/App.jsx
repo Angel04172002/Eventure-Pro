@@ -8,6 +8,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import EventDetails from './components/event-details/EventDetails';
 import EventList from './components/event-list/EventList';
+import Login from './components/login/Login';
 
 
 
@@ -20,6 +21,8 @@ function App() {
 
       <Routes>
 
+        <Route path='/login' element={<Login />} />
+
         <Route path='/event/all' element={<EventList />} />
         <Route path='/event/create' element={<EventCreate />} />
         <Route path='/event/:eventId/details' element={<EventDetails />} />
@@ -27,9 +30,9 @@ function App() {
       </Routes>
 
 
-
-
       <Footer />
+
+
     </>
   )
 }
