@@ -3,10 +3,12 @@ import { useEffect, useRef, useState } from 'react';
 import eventApi from '../../api/eventApi';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import { useForm } from '../../hooks/useForm';
+
 
 export default function EventCreate() {
 
-    const [formValues, setFormValues] = useState({
+    const { formValues, changeHandler } = useForm({
         title: '',
         description: '',
         imageUrl: '',
@@ -14,6 +16,8 @@ export default function EventCreate() {
         place: '',
         date: ''
     });
+
+
 
     const eventFormInputRef = useRef();
 
@@ -25,14 +29,6 @@ export default function EventCreate() {
     }, []);
 
 
-
-    const changeHandler = (e) => {
-
-        setFormValues(oldState => ({
-            ...oldState,
-            [e.target.name]: e.target.value
-        }));
-    };
 
     const createEventHandler = (e) => {
 
