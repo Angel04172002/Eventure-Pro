@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetOneEvent } from '../../hooks/events-hooks';
+import CommentCreate from './comment-create/CommentCreate';
 
 
 export default function EventDetails() {
@@ -70,6 +71,7 @@ export default function EventDetails() {
                     </div>
                 </div>
             </div>
+            <CommentCreate />
         </div>
 
     )

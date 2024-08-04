@@ -8,7 +8,7 @@ async function requester(method, url, data) {
     };
 
 
-    const user = JSON.parse(localStorage.getItem('user'));
+    const accessToken = localStorage.getItem('accessToken');
     
 
     if (data) {
@@ -19,10 +19,9 @@ async function requester(method, url, data) {
 
         options.body = JSON.stringify(data);
 
-        if (user) {
+        if (accessToken) {
 
-            console.log(user?.accessToken)
-            options.headers['X-Authorization'] = user.accessToken;
+            options.headers['X-Authorization'] = accessToken;
 
         };
     };

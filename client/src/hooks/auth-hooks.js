@@ -13,7 +13,7 @@ export function useLogin() {
 
         const authData = await authApi.login(email, password);
         updateAuthData(authData);
-        localStorage.setItem('user', JSON.stringify(authData));
+        localStorage.setItem('accessToken', authData.accessToken);
 
         return authData;
     }
@@ -31,7 +31,7 @@ export function useRegister() {
 
         const authData = await authApi.register(email, password, rePassword);
         updateAuthData(authData);
-        localStorage.setItem('user', authData);
+        localStorage.setItem('accessToken', authData.accessToken);
 
         return authData;
     }
