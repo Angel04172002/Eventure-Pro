@@ -18,6 +18,6 @@ export function useGetAllCategories() {
     return [categories];
 }
 
-export function useCreateEvent() {
+export function useCreateCategory() {
     return categoryApi.create;
 }
