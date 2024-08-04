@@ -1,25 +1,11 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-
-import eventApi from '../../api/eventApi';
+import { useGetOneEvent } from '../../hooks/events-hooks';
 
 
 export default function EventDetails() {
 
-    const [eventInfo, setEventInfo] = useState({});
     const { eventId } = useParams();
-
-    useEffect(() => {
-
-        eventApi.getOne(eventId)
-            .then(result => {
-
-                setEventInfo(result);
-
-            });
-    }, []);
-
+    const [eventInfo] = useGetOneEvent(eventId);
 
     return (
         <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -72,7 +58,7 @@ export default function EventDetails() {
                 <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                     <div className="lg:pr-4">
                         <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
-                     
+
 
                             <p className="mt-8">
                                 Place: {eventInfo.place}

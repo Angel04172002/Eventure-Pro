@@ -25,7 +25,8 @@ function App() {
 
   const dataObj = {
     username: authData.username,
-    token: authData.token,
+    email: authData.email, 
+    accessToken: authData.token,
     updateAuthData
   };
 

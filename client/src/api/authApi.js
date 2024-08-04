@@ -8,3 +8,7 @@ export const login = (email, password) => requester.post(`${baseUrl}/login`, { e
 
 export const register = (email, password) => requester.post(`${baseUrl}/register`, { email, password });
 
+export default {
+   login,
+   register
+}

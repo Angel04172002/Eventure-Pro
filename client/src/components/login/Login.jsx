@@ -4,23 +4,48 @@ import Form from 'react-bootstrap/Form';
 import styles from './Login.module.css';
 
 import { useForm } from '../../hooks/useForm';
+import { useLogin } from '../../hooks/auth-hooks';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
+const initialValues = {
+    email: '',
+    password: ''
+};
 
 export default function Login() {
 
-    const { formValues, changeHandler } = useForm({
-        email: '',
-        password: ''
-    });
+    const [error, setError] = useState('');
 
-    
+    const login = useLogin();
+    const navigate = useNavigate();
+
+    const loginHandler = async (username, password) => {
+
+        try {
+
+            await login(username, password);
+            navigate('/');
+
+        } catch (err) {
+            return setError('Login Error!');
+        }
+    };
+
+    const { formValues, changeHandler, submitHandler } = useForm(initialValues, loginHandler);
+
+
     return (
 
         <>
             <h2 className={styles['login-title']}>Login</h2>
 
-            <Form className={styles['login-form']}>
+            {error && (
+                <p>{error}</p>
+            )}
+
+            <Form onSubmit={submitHandler} className={styles['login-form']}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Email address</Form.Label>

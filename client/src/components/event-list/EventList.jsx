@@ -5,25 +5,14 @@ import EventListItem from "./event-list-item/EventListItem";
 import eventApi from '../../api/eventApi';
 
 import styles from './EventList.module.css';
+import { useGetAllEvents } from '../../hooks/events-hooks';
 
 
 export default function EventList() {
 
-    const [events, setEvents] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-
-        eventApi.getAll()
-            .then(result => {
-
-                setEvents(result);
-                setIsLoading(false);
-
-            });
-    }, []);
-
-
+    // const [isLoading, setIsLoading] = useState(true);
+    
+    const [events] = useGetAllEvents();
 
     return (
         <>

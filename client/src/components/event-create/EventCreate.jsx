@@ -7,22 +7,35 @@ import Form from 'react-bootstrap/Form';
 import styles from './EventCreate.module.css'
 
 import { useForm } from '../../hooks/useForm';
+import { useNavigate } from 'react-router-dom';
 
+
+const initialValues = {
+    title: '',
+    description: '',
+    imageUrl: '',
+    category: '',
+    place: '',
+    date: ''
+};
 
 export default function EventCreate() {
 
-    const { formValues, changeHandler } = useForm({
-        title: '',
-        description: '',
-        imageUrl: '',
-        category: '',
-        place: '',
-        date: ''
-    });
+    const navigate = useNavigate();
 
+    const createEventHandler = async (values) => {
+        
+        await eventApi.create(values); 
+        navigate('/');
+    };
 
-
+    const { formValues, changeHandler, submitHandler } = useForm(initialValues, createEventHandler);
     const eventFormInputRef = useRef();
+
+
+
+
+
 
 
     useEffect(() => {
@@ -33,17 +46,17 @@ export default function EventCreate() {
 
 
 
-    const createEventHandler = (e) => {
+    // const createEventHandler = (e) => {
 
-        e.preventDefault();
+    //     e.preventDefault();
 
-        eventApi.create(formValues)
-            .then(() => {
+    //     eventApi.create(formValues)
+    //         .then(() => {
 
-                console.log('created');
+    //             console.log('created');
 
-            });
-    };
+    //         });
+    // };
 
     return (
 
@@ -55,10 +68,10 @@ export default function EventCreate() {
         }}>
 
 
-            <h2 className= {styles['form-title']}>Create Event</h2>
+            <h2 className={styles['form-title']}>Create Event</h2>
 
 
-            <Form onSubmit={createEventHandler} className={styles['event-form']}>
+            <Form onSubmit={submitHandler} className={styles['event-form']}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Title</Form.Label>
