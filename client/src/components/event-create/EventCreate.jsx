@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { useEffect, useRef, useState } from 'react';
-import eventApi from '../../api/eventApi';
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +7,7 @@ import styles from './EventCreate.module.css'
 
 import { useForm } from '../../hooks/useForm';
 import { useNavigate } from 'react-router-dom';
+import { useCreateEvent } from '../../hooks/events-hooks';
 
 
 const initialValues = {
@@ -21,15 +21,26 @@ const initialValues = {
 
 export default function EventCreate() {
 
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+    const createEvent = useCreateEvent();
 
     const createEventHandler = async (values) => {
-        
-        await eventApi.create(values); 
-        navigate('/');
+
+        try {
+
+            await createEvent(values);
+            navigate('/');
+
+        } catch(err) {
+            return setError(err);
+        }
+
     };
 
     const { formValues, changeHandler, submitHandler } = useForm(initialValues, createEventHandler);
+
+
     const eventFormInputRef = useRef();
 
 
@@ -70,6 +81,10 @@ export default function EventCreate() {
 
             <h2 className={styles['form-title']}>Create Event</h2>
 
+
+            {error && (
+                <p>{error}</p>
+            )}
 
             <Form onSubmit={submitHandler} className={styles['event-form']}>
 

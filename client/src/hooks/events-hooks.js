@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import eventApi from "../api/eventApi";
 
+
 export function useGetAllEvents() {
 
     const [events, setEvents] = useState([]);
@@ -16,7 +17,6 @@ export function useGetAllEvents() {
 
     return [events];
 }
-
 
 export function useGetOneEvent(eventId) {
 
@@ -37,6 +37,6 @@ export function useGetOneEvent(eventId) {
 
 
 export function useCreateEvent() {
-
+    return eventApi.create;
 }
 
