@@ -8,6 +8,7 @@ import styles from './EventCreate.module.css'
 import { useForm } from '../../hooks/useForm';
 import { useNavigate } from 'react-router-dom';
 import { useCreateEvent } from '../../hooks/events-hooks';
+import { useGetAllCategories } from '../../hooks/categories-hooks';
 
 
 const initialValues = {
@@ -24,6 +25,8 @@ export default function EventCreate() {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const createEvent = useCreateEvent();
+    const [categories] = useGetAllCategories();
+
 
     const createEventHandler = async (values) => {
 
@@ -32,7 +35,7 @@ export default function EventCreate() {
             await createEvent(values);
             navigate('/');
 
-        } catch(err) {
+        } catch (err) {
             return setError(err);
         }
 
@@ -42,9 +45,6 @@ export default function EventCreate() {
 
 
     const eventFormInputRef = useRef();
-
-
-
 
 
 
@@ -106,10 +106,9 @@ export default function EventCreate() {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Category</Form.Label>
                     <Form.Select name="category" value={formValues.category} onChange={changeHandler} aria-label="Default select example">
-                        <option>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+
+                        {categories.map(c => <option key={c._id} value={c.name}>{c.name}</option>)}
+
                     </Form.Select>
                 </Form.Group>
 
