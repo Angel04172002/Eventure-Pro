@@ -11,12 +11,28 @@ import EventList from './components/event-list/EventList';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Home from './components/home/Home';
+import { AuthContext } from './contexts/AuthContext';
+import { useState } from 'react';
 
 
 function App() {
 
+  const [authData, setAuthData] = useState({});
+
+  const updateAuthData = (obj) => {
+    setAuthData(obj);
+  };
+
+  const dataObj = {
+    username: authData.username,
+    token: authData.token,
+    updateAuthData
+  };
+
+
   return (
-    <>
+
+    <AuthContext.Provider value={dataObj}>
 
       <Header />
 
@@ -37,7 +53,7 @@ function App() {
       <Footer />
 
 
-    </>
+    </AuthContext.Provider>
   )
 }
 
