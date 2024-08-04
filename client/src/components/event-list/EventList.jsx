@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import EventListItem from "./event-list-item/EventListItem";
 import eventApi from '../../api/eventApi';
 
+import styles from './EventList.module.css';
 
 
 export default function EventList() {
@@ -27,7 +28,7 @@ export default function EventList() {
     return (
         <>
 
-            <h2>All events</h2>
+            <h2 className= {styles['title']}>All events</h2>
 
             
             <Row xs={1} md={2} className="g-4">
