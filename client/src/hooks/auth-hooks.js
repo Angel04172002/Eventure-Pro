@@ -13,7 +13,7 @@ export function useLogin() {
 
         const authData = await authApi.login(email, password);
         updateAuthData(authData);
-        localStorage.setItem('user', authData);
+        localStorage.setItem('user', JSON.stringify(authData));
 
         return authData;
     }

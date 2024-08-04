@@ -3,34 +3,39 @@ async function requester(method, url, data) {
 
     const options = {};
 
-    if(method != 'GET') {
+    if (method != 'GET') {
         options.method = method;
     };
 
 
-    const user = localStorage.getItem('user');
-    console.log(user)
+    const user = JSON.parse(localStorage.getItem('user'));
+    
 
-    if(data) {
+    if (data) {
 
         options.headers = {
             'content-type': 'application/json'
         };
 
         options.body = JSON.stringify(data);
+
+        if (user) {
+
+            console.log(user?.accessToken)
+            options.headers['X-Authorization'] = user.accessToken;
+
+        };
     };
 
 
-    if(user) {
-        options.headers['X-Authorization'] = user.accessToken;
-    }
+
 
 
     const response = await fetch(url, options);
     const result = await response.json();
 
-    
-    if(response.ok == false) {
+
+    if (response.ok == false) {
         throw result;
     }
 
