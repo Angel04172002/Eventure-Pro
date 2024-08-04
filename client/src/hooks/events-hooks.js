@@ -30,7 +30,7 @@ export function useGetOneEvent(eventId) {
                 setEventInfo(result);
 
             });
-    }, []);
+    }, [eventId]);
 
     return [eventInfo];
 }
