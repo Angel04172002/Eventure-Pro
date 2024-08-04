@@ -27,7 +27,7 @@ function App() {
   const dataObj = {
     email: authData.email, 
     isAuthenticated: !!authData.email,
-    accessToken: authData.token,
+    accessToken: authData.accessToken,
     updateAuthData
   };
 

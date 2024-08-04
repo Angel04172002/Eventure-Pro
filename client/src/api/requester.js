@@ -8,6 +8,9 @@ async function requester(method, url, data) {
     };
 
 
+    const user = localStorage.getItem('user');
+    console.log(user)
+
     if(data) {
 
         options.headers = {
@@ -17,8 +20,19 @@ async function requester(method, url, data) {
         options.body = JSON.stringify(data);
     };
 
+
+    if(user) {
+        options.headers['X-Authorization'] = user.accessToken;
+    }
+
+
     const response = await fetch(url, options);
-    const result = response.json();
+    const result = await response.json();
+
+    
+    if(response.ok == false) {
+        throw result;
+    }
 
     return result;
 }

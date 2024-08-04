@@ -9,14 +9,32 @@ export function useLogin() {
 
     const { updateAuthData } = useContext(AuthContext);
 
-    const login = async ({email, password}) => {
+    const login = async (email, password) => {
 
-        const result = await authApi.login(email, password);
-        updateAuthData(result);
+        const authData = await authApi.login(email, password);
+        updateAuthData(authData);
+        localStorage.setItem('user', authData);
 
-        return result;
+        return authData;
     }
 
     return login;
 
+}
+
+
+export function useRegister() {
+    
+    const { updateAuthData } = useContext(AuthContext);
+
+    const register = async (email, password, rePassword) => {
+
+        const authData = await authApi.register(email, password, rePassword);
+        updateAuthData(authData);
+        localStorage.setItem('user', authData);
+
+        return authData;
+    }
+
+    return register;
 }
