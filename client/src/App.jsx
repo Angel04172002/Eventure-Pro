@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import './App.css'
@@ -12,7 +13,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Home from './components/home/Home';
 import { AuthContext } from './contexts/AuthContext';
-import { useState } from 'react';
+
 
 
 function App() {
@@ -24,8 +25,8 @@ function App() {
   };
 
   const dataObj = {
-    username: authData.username,
     email: authData.email, 
+    isAuthenticated: !!authData.email,
     accessToken: authData.token,
     updateAuthData
   };
