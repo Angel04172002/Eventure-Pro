@@ -1,12 +1,21 @@
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetOneEvent } from '../../hooks/events-hooks';
 import CommentCreate from './comment-create/CommentCreate';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useGetAllComments } from '../../hooks/comment-hooks';
+
 
 
 export default function EventDetails() {
 
     const { eventId } = useParams();
     const [eventInfo] = useGetOneEvent(eventId);
+    const [comments, setComments] = useGetAllComments(eventId);
+    const { isAuthenticated } = useContext(AuthContext);
+
+
+    console.log(comments);
 
     return (
         <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -71,7 +80,19 @@ export default function EventDetails() {
                     </div>
                 </div>
             </div>
-            <CommentCreate />
+
+            <ul>
+                {comments.map(c => (
+                    <li key={c._id}>
+                        <p>{c?.author?.email}:  {c.text}</p>
+                    </li>
+                ))}
+            </ul>
+
+            {isAuthenticated && (
+                <CommentCreate eventId={eventId} setComments={setComments} />
+            )}
+
         </div>
 
     )

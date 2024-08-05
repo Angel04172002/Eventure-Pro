@@ -14,6 +14,7 @@ import Register from './components/register/Register';
 import Home from './components/home/Home';
 import { AuthContext } from './contexts/AuthContext';
 import CategoryCreate from './components/category-create/CategoryCreate';
+import Logout from './components/logout/Logout';
 
 
 
@@ -25,11 +26,17 @@ function App() {
     setAuthData(obj);
   };
 
+  const logout = () => {
+    setAuthData(null);
+  };
+
   const dataObj = {
-    email: authData.email, 
-    isAuthenticated: !!authData.email,
-    accessToken: authData.accessToken,
-    updateAuthData
+    userId: authData?._id,
+    email: authData?.email,
+    isAuthenticated: !!authData?.email,
+    accessToken: authData?.accessToken,
+    updateAuthData,
+    logout
   };
 
 
@@ -45,6 +52,7 @@ function App() {
 
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/logout' element={<Logout />} />
 
         <Route path='/event/all' element={<EventList />} />
         <Route path='/event/create' element={<EventCreate />} />

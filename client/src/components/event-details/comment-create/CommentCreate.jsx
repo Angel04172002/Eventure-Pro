@@ -1,15 +1,34 @@
+import { useCreateComment } from "../../../hooks/comment-hooks";
 import { useForm } from "../../../hooks/useForm";
 import styles from './CommentCreate.module.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+
 const initialValues = {
     text: ''
 };
 
-export default function CommentCreate() {
+export default function CommentCreate({
+    eventId,
+    setComments
+}) {
 
-    const { formValues, changeHandler, submitHandler } = useForm(initialValues);
+    const createComment = useCreateComment();
+
+    const { formValues, changeHandler, submitHandler } = useForm(initialValues, async ({ text }) => {
+
+        try {
+
+            const newComment = await createComment(eventId, text);
+            setComments(oldState => [...oldState, newComment]);
+
+        } catch (err) {
+
+        }
+
+    });
+
 
     return (
         <>
