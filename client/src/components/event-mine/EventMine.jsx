@@ -3,6 +3,7 @@ import { useGetMineEvents } from '../../hooks/events-hooks'
 import { AuthContext } from '../../contexts/AuthContext'
 import Row from 'react-bootstrap/esm/Row';
 import EventListItem from '../event-list-item/EventListItem';
+import styles from './EventMine.module.css';
 
 export default function EventMine() {
 
@@ -12,10 +13,18 @@ export default function EventMine() {
 
     return (
 
-        <Row xs={1} md={2} className="g-4">
+        <>
 
-            {events.map(ev => <EventListItem key={ev._id} event={ev} />)}
+            <h2 className={styles['title']}>My events</h2>
 
-        </Row>
+            <Row xs={1} md={2} className="g-4">
+
+                {events.map(ev => <EventListItem key={ev._id} event={ev} />)}
+
+                {events.length == 0 && <h2 style={{ fontSize: '2em' }}>No Events yet</h2>}
+
+            </Row>
+
+        </>
     )
 }

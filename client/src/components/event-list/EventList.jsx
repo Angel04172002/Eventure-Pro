@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 
 import EventListItem from "../event-list-item/EventListItem";
-import eventApi from '../../api/eventApi';
+
 
 import styles from './EventList.module.css';
 import { useGetAllEvents } from '../../hooks/events-hooks';
@@ -30,6 +30,8 @@ export default function EventList() {
                 )}
 
             </Row>
+
+            {events.length == 0 && <h2 style={{ fontSize: '2em' }}>No Events yet</h2>}
         </>
     )
 }
