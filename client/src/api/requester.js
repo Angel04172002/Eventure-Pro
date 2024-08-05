@@ -1,4 +1,3 @@
-
 async function requester(method, url, data) {
 
     const options = {};
@@ -18,19 +17,25 @@ async function requester(method, url, data) {
         };
 
         options.body = JSON.stringify(data);
-
-        if (accessToken) {
-
-            options.headers['X-Authorization'] = accessToken;
-
-        };
     };
 
 
+    if (accessToken) {
 
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': accessToken
+        };
+    };
 
+    
 
     const response = await fetch(url, options);
+
+    if(response.status == 204) {
+        return;
+    }
+
     const result = await response.json();
 
 
