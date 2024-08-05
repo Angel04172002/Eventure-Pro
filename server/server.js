@@ -1342,28 +1342,32 @@
     };
     var seedData = {
 
-        "2de2a2b0-7c4d-4694-a702-6034ced3da3e": {
-            "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-            "title": "Sunrise",
-            "description": "Sunrise in Spain in 2026",
-            "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv0eELSP9aNYGZrb0FzSuv7un1AFReAv00GQ&s",
-            "category": "Entertainment",
-            "place": "Spain",
-            "date": "2026-07-15",
-            "_createdOn": 1722835006180,
-            "_id": "2de2a2b0-7c4d-4694-a702-6034ced3da3e"
-        },
-        "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
-            "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-            "title": "23rd Birthday",
-            "description": "Angel 23rd birthday",
-            "imageUrl": "https://png.pngtree.com/png-clipart/20221122/ourmid/pngtree-happy-birthday-text-effect-png-image_241348.png",
-            "category": "Entertainment",
-            "place": "Bulgaria",
-            "date": "2025-04-17",
-            "_createdOn": 1722835088496,
-            "_id": "d0e5c223-7f98-4d5d-b8e7-10749158a77c"
+        events: {
+            "2de2a2b0-7c4d-4694-a702-6034ced3da3e": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Sunrise",
+                "description": "Sunrise in Spain in 2026",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv0eELSP9aNYGZrb0FzSuv7un1AFReAv00GQ&s",
+                "category": "Entertainment",
+                "place": "Spain",
+                "date": "2026-07-15",
+                "_createdOn": 1722835006180,
+                "_id": "2de2a2b0-7c4d-4694-a702-6034ced3da3e"
+            },
+            "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "23rd Birthday",
+                "description": "Angel 23rd birthday",
+                "imageUrl": "https://png.pngtree.com/png-clipart/20221122/ourmid/pngtree-happy-birthday-text-effect-png-image_241348.png",
+                "category": "Entertainment",
+                "place": "Bulgaria",
+                "date": "2025-04-17",
+                "_createdOn": 1722835088496,
+                "_id": "d0e5c223-7f98-4d5d-b8e7-10749158a77c"
+            }
         }
+
+
     };
     var rules$1 = {
         users: {

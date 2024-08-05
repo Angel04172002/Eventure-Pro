@@ -14,11 +14,21 @@ export const getAll = async () => {
 
 export const getOne = (eventId) => requester.get(`${baseUrl}/${eventId}`);
 
+export const getMine = async (userId) => {
+
+    const params = new URLSearchParams({
+        where: `_ownerId="${userId}"`
+    });
+
+    return requester.get(`${baseUrl}?${params.toString()}`);    
+};
+
 export const create = (data) => requester.post(baseUrl, data);
 
 
 export default {
     getAll,
     getOne,
+    getMine,
     create
 };

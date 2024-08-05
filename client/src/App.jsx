@@ -15,6 +15,7 @@ import Home from './components/home/Home';
 import { AuthContext } from './contexts/AuthContext';
 import CategoryCreate from './components/category-create/CategoryCreate';
 import Logout from './components/logout/Logout';
+import EventMine from './components/event-mine/EventMine';
 
 
 
@@ -55,6 +56,7 @@ function App() {
         <Route path='/logout' element={<Logout />} />
 
         <Route path='/event/all' element={<EventList />} />
+        <Route path='/event/mine' element={<EventMine />} />
         <Route path='/event/create' element={<EventCreate />} />
         <Route path='/event/:eventId/details' element={<EventDetails />} />
 

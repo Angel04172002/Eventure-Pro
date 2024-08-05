@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 
-import EventListItem from "./event-list-item/EventListItem";
+import EventListItem from "../event-list-item/EventListItem";
 import eventApi from '../../api/eventApi';
 
 import styles from './EventList.module.css';
