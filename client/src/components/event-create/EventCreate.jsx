@@ -47,6 +47,9 @@ export default function EventCreate() {
     const eventFormInputRef = useRef();
 
 
+    console.log(categories);
+    
+
 
 
     useEffect(() => {
@@ -107,7 +110,7 @@ export default function EventCreate() {
                     <Form.Label className={styles['form-label']}>Category</Form.Label>
                     <Form.Select name="category" value={formValues.category} onChange={changeHandler} aria-label="Default select example">
 
-                        {categories.map(c => <option key={c._id} value={c.name}>{c.name}</option>)}
+                        {categories.map(c => <option key={c._id} value={c.text}>{c.text}</option>)}
 
                     </Form.Select>
                 </Form.Group>

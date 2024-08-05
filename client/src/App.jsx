@@ -13,6 +13,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Home from './components/home/Home';
 import { AuthContext } from './contexts/AuthContext';
+import CategoryCreate from './components/category-create/CategoryCreate';
 
 
 
@@ -48,6 +49,8 @@ function App() {
         <Route path='/event/all' element={<EventList />} />
         <Route path='/event/create' element={<EventCreate />} />
         <Route path='/event/:eventId/details' element={<EventDetails />} />
+
+        <Route path='/category/create' element={<CategoryCreate />} />
 
       </Routes>
 
