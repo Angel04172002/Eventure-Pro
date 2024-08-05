@@ -24,7 +24,7 @@ export function useLogin() {
 
 
 export function useRegister() {
-    
+
     const { updateAuthData } = useContext(AuthContext);
 
     const register = async (email, password, rePassword) => {
@@ -37,4 +37,17 @@ export function useRegister() {
     }
 
     return register;
+}
+
+export const useLogout = () => {
+
+    const { logout: localLogout } = useContext(AuthContext);
+
+    const logoutHandler = async () => {
+
+        await authApi.logout();
+        localLogout();
+    }
+
+    return logoutHandler;
 }

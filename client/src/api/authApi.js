@@ -14,11 +14,13 @@ export const register = (email, password, rePassword) => {
     };
 
     return requester.post(`${baseUrl}/register`, { email, password });
-}
+};
 
+export const logout = () => requester.get(`${baseUrl}/logout`);
     
 
 export default {
    login,
-   register
+   register,
+   logout
 }
