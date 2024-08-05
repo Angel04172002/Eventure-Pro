@@ -12,38 +12,19 @@ import EventList from './components/event-list/EventList';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Home from './components/home/Home';
-import { AuthContext } from './contexts/AuthContext';
 import CategoryCreate from './components/category-create/CategoryCreate';
 import Logout from './components/logout/Logout';
 import EventMine from './components/event-mine/EventMine';
+
+import { AuthContextProvider } from './contexts/AuthContext';
 
 
 
 function App() {
 
-  const [authData, setAuthData] = useState({});
-
-  const updateAuthData = (obj) => {
-    setAuthData(obj);
-  };
-
-  const logout = () => {
-    setAuthData(null);
-  };
-
-  const dataObj = {
-    userId: authData?._id,
-    email: authData?.email,
-    isAuthenticated: !!authData?.email,
-    accessToken: authData?.accessToken,
-    updateAuthData,
-    logout
-  };
-
-
   return (
 
-    <AuthContext.Provider value={dataObj}>
+    <AuthContextProvider>
 
       <Header />
 
@@ -68,7 +49,7 @@ function App() {
       <Footer />
 
 
-    </AuthContext.Provider>
+    </AuthContextProvider>
   )
 }
 
