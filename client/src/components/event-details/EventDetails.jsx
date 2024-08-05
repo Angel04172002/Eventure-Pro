@@ -79,13 +79,24 @@ export default function EventDetails() {
                 </div>
             </div>
 
-            <ul>
-                {comments.map(c => (
-                    <li key={c._id}>
-                        <p>{c?.author?.email}:  {c.text}</p>
-                    </li>
-                ))}
-            </ul>
+            {comments.length > 0
+                ?
+                <>
+                    <h2 style={{ marginBottom: '1em', fontSize: '2em' }}>Comments</h2>
+
+                    <ul>
+                        {comments.map(c => (
+                            <li key={c._id} style={{ border: '5px solid #CCC', padding: '1em', marginBottom: '2em' }}>
+                                <p style={{ fontSize: '1.3em' }}>{c?.author?.email}:  {c.text}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </>
+                :
+                <h2 style={{fontSize: '2em'}}>No comments yet</h2>
+            }
+
+
 
             {isAuthenticated && (
                 <CommentCreate eventId={eventId} setComments={setComments} />
