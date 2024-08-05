@@ -1365,8 +1365,26 @@
                 "_createdOn": 1722835088496,
                 "_id": "d0e5c223-7f98-4d5d-b8e7-10749158a77c"
             }
-        }
+        },
+        categories: {
 
+            "da78cb71-96e2-4b3c-ba5e-ddef9b489571": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "text": "Entertainment",
+                "_createdOn": 1722843626409,
+                "_id": "da78cb71-96e2-4b3c-ba5e-ddef9b489571"
+            },
+
+
+            "f3c26798-49ec-453a-8361-b8fb00d08f02": {
+                
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "text": "Study",
+                "_createdOn": 1722843689335,
+                "_id": "f3c26798-49ec-453a-8361-b8fb00d08f02"
+            }
+
+        }
 
     };
     var rules$1 = {
