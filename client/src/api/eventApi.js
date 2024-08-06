@@ -25,10 +25,16 @@ export const getMine = async (userId) => {
 
 export const create = (data) => requester.post(baseUrl, data);
 
+export const update = (eventId, data) => requester.put(`${baseUrl}/${eventId}`, data);
+
+export const remove = (eventId) => requester.del(`${baseUrl}/${eventId}`);
+
 
 export default {
     getAll,
     getOne,
     getMine,
-    create
+    create,
+    update,
+    remove
 };

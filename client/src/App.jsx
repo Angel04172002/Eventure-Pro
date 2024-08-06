@@ -39,6 +39,7 @@ function App() {
         <Route path='/event/all' element={<EventList />} />
         <Route path='/event/mine' element={<EventMine />} />
         <Route path='/event/create' element={<EventCreate />} />
+        <Route path='/event/:eventId/edit' element={<EventEdit />} />
         <Route path='/event/:eventId/details' element={<EventDetails />} />
 
         <Route path='/category/create' element={<CategoryCreate />} />

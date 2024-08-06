@@ -2,8 +2,9 @@ import { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
+import eventApi from '../../api/eventApi';
 
 
 export default function EventListItem({
@@ -11,7 +12,27 @@ export default function EventListItem({
 }) {
 
     const { userId } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const isOwner = userId == event._ownerId;
+
+    const eventDeleteHandler = async () => {
+
+        const isConfirmed = confirm(`Are you sure you want to delete ${event.title} event?`);
+
+        if(!isConfirmed) {
+            return;
+        }
+
+        try {
+
+            await eventApi.remove(event._id);
+            navigate('/');
+
+        } catch(err) {
+            console.log(err.message);
+        }   
+    }
 
     return (
         <>
@@ -26,7 +47,7 @@ export default function EventListItem({
                     {isOwner && (
                         <div style={{ display: 'flex', gap: '1em', margin: '0 auto', marginBottom: '0.7em' }}>
                             <Link style={{ fontSize: '1.6em' }} to={`/event/${event._id}/edit`} className='text-sm font-semibold leading-6 text-gray-900'>Edit</Link>
-                            <Link style={{ fontSize: '1.6em' }} to={`/event/${event._id}/delete`} className='text-sm font-semibold leading-6 text-gray-900'>Delete</Link>
+                            <a style={{ fontSize: '1.6em' }} onClick={eventDeleteHandler} className='text-sm font-semibold leading-6 text-gray-900'>Delete</Link>
                         </div>
                     )}
 

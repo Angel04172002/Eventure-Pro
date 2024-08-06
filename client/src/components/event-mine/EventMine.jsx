@@ -10,7 +10,6 @@ export default function EventMine() {
     const { userId } = useContext(AuthContext);
     const [events] = useGetMineEvents(userId);
 
-
     return (
 
         <>

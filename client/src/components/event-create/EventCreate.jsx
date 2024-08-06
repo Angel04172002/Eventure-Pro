@@ -46,8 +46,6 @@ export default function EventCreate() {
 
     const eventFormInputRef = useRef();
 
-
-    console.log(categories);
     
 
 
