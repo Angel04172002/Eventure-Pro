@@ -14,6 +14,7 @@ export default function EventList() {
 
             <h2 className= {styles['title']}>All events</h2>
 
+
             
             <Row xs={1} md={2} className="g-4">
 

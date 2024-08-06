@@ -7,8 +7,6 @@ export default function Home() {
 
     const [events] = useGetLatestEvents();
 
-    console.log(events);
-
     return (
         <>
             <h1 className= {styles['mainTitle']}>Welcome to Eventure Pro!</h1>

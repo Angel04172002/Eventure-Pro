@@ -11,6 +11,7 @@ export function AuthContextProvider(props) {
     };
   
     const logout = () => {
+      localStorage.clear();
       setAuthData(null);
     };
   
