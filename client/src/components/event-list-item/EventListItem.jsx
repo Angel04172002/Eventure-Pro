@@ -47,7 +47,7 @@ export default function EventListItem({
                     {isOwner && (
                         <div style={{ display: 'flex', gap: '1em', margin: '0 auto', marginBottom: '0.7em' }}>
                             <Link style={{ fontSize: '1.6em' }} to={`/event/${event._id}/edit`} className='text-sm font-semibold leading-6 text-gray-900'>Edit</Link>
-                            <a style={{ fontSize: '1.6em' }} onClick={eventDeleteHandler} className='text-sm font-semibold leading-6 text-gray-900'>Delete</Link>
+                            <a style={{ fontSize: '1.6em' }} onClick={eventDeleteHandler} className='text-sm font-semibold leading-6 text-gray-900'>Delete</a>
                         </div>
                     )}
 

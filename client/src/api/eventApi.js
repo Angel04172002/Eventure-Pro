@@ -25,12 +25,9 @@ export const getMine = async (userId) => {
 
 export const getLatest = async () => {
 
-    const params = new URLSearchParams({
-        sortBy: `_createdOn desc`,
-        pageSize: 3
-    });
+    const updatedUrl = `${baseUrl}?sortBy=_createdOn%20desc&pageSize=3`;
+    const result = await requester.get(updatedUrl);
 
-    const result = await requester.get(`${baseUrl}?${params.toString()}`);
     return Object.values(result); 
 }
 

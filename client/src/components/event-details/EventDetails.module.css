@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-section {
+    max-width: 50%;
+    margin-top: 8em;
+}
+
+.comment-section {
+    margin-top: 2em;
+}
+
+.content-section h2 {
+    font-size: 3em;
+}
+
+.content-section .description {
+    font-size: 1.5em;
+    margin-top: 3em;
+    text-align: left;
+}
+
+.content-section .place {
+    font-size: 1.2em;
+    text-align: left;
+    margin-top: 5em;
+}
+
+.content-section .date {
+    font-size: 1.2em;
+    text-align: left;
+    margin-top: 3em;
+}
+
+.content-section .category {
+    font-size: 1.2em;
+    text-align: left;
+    margin-top: 3em;
+}
+
+
+.image-section  {
+    max-width: 50%;
+}
+
+.image-section img {
+    display: block;
+    height: 90%;
+    margin-top: 3em;    
+}

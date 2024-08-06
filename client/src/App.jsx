@@ -17,6 +17,8 @@ import Logout from './components/logout/Logout';
 import EventMine from './components/event-mine/EventMine';
 
 import { AuthContextProvider } from './contexts/AuthContext';
+import PrivateGuard from './components/common/PrivateGuard';
+import EventEdit from './components/event-edit/EventEdit';
 
 
 
@@ -34,15 +36,20 @@ function App() {
 
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/logout' element={<Logout />} />
 
         <Route path='/event/all' element={<EventList />} />
-        <Route path='/event/mine' element={<EventMine />} />
-        <Route path='/event/create' element={<EventCreate />} />
-        <Route path='/event/:eventId/edit' element={<EventEdit />} />
         <Route path='/event/:eventId/details' element={<EventDetails />} />
 
-        <Route path='/category/create' element={<CategoryCreate />} />
+
+        <Route element={<PrivateGuard />}>
+
+          <Route path='/event/mine' element={<EventMine />} />
+          <Route path='/event/create' element={<EventCreate />} />
+          <Route path='/event/:eventId/edit' element={<EventEdit />} />
+          <Route path='/category/create' element={<CategoryCreate />} />
+          <Route path='/logout' element={<Logout />} />
+
+        </Route>
 
       </Routes>
 

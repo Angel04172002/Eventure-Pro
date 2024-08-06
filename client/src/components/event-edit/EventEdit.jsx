@@ -4,27 +4,36 @@ import { useForm } from '../../hooks/useForm';
 import styles from './EventEdit.module.css';
 import { useGetOneEvent } from '../../hooks/events-hooks';
 import eventApi from '../../api/eventApi';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 
 
 
 export default function EventEdit() {
 
+    const [error, setError] = useState('');
     const { eventId } = useParams();
     const navigate = useNavigate();
     const [event] = useGetOneEvent(eventId);
+    const [categories] = useGetAllCategories();
 
-    const categories = useGetAllCategories();
-
-    const { changeHandler, submitHandler, values } =
+    const { changeHandler, submitHandler, formValues } =
         useForm(event, async (values) => {
 
-            const updatedEvent = await eventApi.update(eventId, values);
-            navigate(`/event/${eventId}/details`)
+            try {
+
+                await eventApi.update(eventId, values);
+                navigate(`/event/${eventId}/details`)
+
+            } catch (err) {
+                return setError(err.message);
+            }
         });
 
-        
+
+
     return (
         <div style={{
             display: 'block',
@@ -44,22 +53,22 @@ export default function EventEdit() {
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Title</Form.Label>
-                    <Form.Control type="text" value={values.title} name="title" onChange={changeHandler} />
+                    <Form.Control type="text" value={formValues.title} name="title" onChange={changeHandler} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Description</Form.Label>
-                    <Form.Control type="text" value={values.description} name="description" onChange={changeHandler} />
+                    <Form.Control type="text" value={formValues.description} name="description" onChange={changeHandler} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Image URL</Form.Label>
-                    <Form.Control type="text" value={values.imageUrl} name="imageUrl" onChange={changeHandler} />
+                    <Form.Control type="text" value={formValues.imageUrl} name="imageUrl" onChange={changeHandler} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Category</Form.Label>
-                    <Form.Select name="category" value={values.category} onChange={changeHandler} aria-label="Default select example">
+                    <Form.Select name="category" value={formValues.category} onChange={changeHandler} aria-label="Default select example">
 
                         {categories.map(c => <option key={c._id} value={c.text}>{c.text}</option>)}
 
@@ -68,12 +77,12 @@ export default function EventEdit() {
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Place</Form.Label>
-                    <Form.Control type="text" value={values.place} name="place" onChange={changeHandler} />
+                    <Form.Control type="text" value={formValues.place} name="place" onChange={changeHandler} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className={styles['form-label']}>Date</Form.Label>
-                    <Form.Control type="date" value={values.date} name="date" onChange={changeHandler} />
+                    <Form.Control type="date" value={formValues.date} name="date" onChange={changeHandler} />
                 </Form.Group>
 
 
