@@ -4,16 +4,10 @@ import { useForm } from '../../hooks/useForm';
 import styles from './EventEdit.module.css';
 import { useGetOneEvent } from '../../hooks/events-hooks';
 import eventApi from '../../api/eventApi';
+import { useMemo } from 'react';
 
 
-const initialValues = {
-    title: '',
-    description: '',
-    imageUrl: '',
-    category: '',
-    place: '',
-    date: ''
-};
+
 
 export default function EventEdit() {
 
@@ -24,12 +18,13 @@ export default function EventEdit() {
     const categories = useGetAllCategories();
 
     const { changeHandler, submitHandler, values } =
-        useForm(Object.assign(initialValues, event), async (values) => {
+        useForm(event, async (values) => {
 
             const updatedEvent = await eventApi.update(eventId, values);
             navigate(`/event/${eventId}/details`)
         });
 
+        
     return (
         <div style={{
             display: 'block',

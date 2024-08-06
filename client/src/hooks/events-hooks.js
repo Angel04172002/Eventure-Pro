@@ -20,7 +20,14 @@ export function useGetAllEvents() {
 
 export function useGetOneEvent(eventId) {
 
-    const [eventInfo, setEventInfo] = useState({});
+    const [eventInfo, setEventInfo] = useState({
+        title: '',
+        description: '',
+        imageUrl: '',
+        category: '',
+        place: '',
+        date: ''
+    });
 
     useEffect(() => {
 
@@ -33,6 +40,24 @@ export function useGetOneEvent(eventId) {
     }, [eventId]);
 
     return [eventInfo];
+}
+
+export function useGetLatestEvents() {
+
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+
+        eventApi.getLatest()
+            .then(result => {
+
+                setEvents(result);
+            });
+    }, []);
+
+    
+    return [events];
+
 }
 
 export function useGetMineEvents(userId) {

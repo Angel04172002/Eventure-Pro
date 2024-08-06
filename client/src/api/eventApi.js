@@ -23,6 +23,17 @@ export const getMine = async (userId) => {
     return requester.get(`${baseUrl}?${params.toString()}`);    
 };
 
+export const getLatest = async () => {
+
+    const params = new URLSearchParams({
+        sortBy: `_createdOn desc`,
+        pageSize: 3
+    });
+
+    const result = await requester.get(`${baseUrl}?${params.toString()}`);
+    return Object.values(result); 
+}
+
 export const create = (data) => requester.post(baseUrl, data);
 
 export const update = (eventId, data) => requester.put(`${baseUrl}/${eventId}`, data);
@@ -34,6 +45,7 @@ export default {
     getAll,
     getOne,
     getMine,
+    getLatest,
     create,
     update,
     remove
