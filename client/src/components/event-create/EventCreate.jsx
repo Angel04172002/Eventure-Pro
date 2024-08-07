@@ -44,31 +44,8 @@ export default function EventCreate() {
     const { formValues, changeHandler, submitHandler } = useForm(initialValues, createEventHandler);
 
 
-    const eventFormInputRef = useRef();
-
-    
 
 
-
-    useEffect(() => {
-
-        //eventFormInputRef.current.focus();
-
-    }, []);
-
-
-
-    // const createEventHandler = (e) => {
-
-    //     e.preventDefault();
-
-    //     eventApi.create(formValues)
-    //         .then(() => {
-
-    //             console.log('created');
-
-    //         });
-    // };
 
     return (
 

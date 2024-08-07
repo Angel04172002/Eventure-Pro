@@ -20,9 +20,9 @@ export default function EventMine() {
 
                 {events.map(ev => <EventListItem key={ev._id} event={ev} />)}
 
-                {events.length == 0 && <h2 style={{ fontSize: '2em' }}>No Events yet</h2>}
-
             </Row>
+
+            {events.length == 0 && <h2 style={{ fontSize: '4em' }}>No Events yet</h2>}
 
         </>
     )
